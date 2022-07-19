@@ -1,13 +1,31 @@
 extends KinematicBody2D
 
+var bullet := preload("res://Projectiles/Bullet.tscn")
+
 export var max_speed : int = 175
 var velocity : Vector2 = Vector2.ZERO
 
 onready var camera = get_parent().get_node("Camera2D")
+onready var guns = $Guns
+onready var shootDelay = $ShootDelay
 
 func _ready():
 	pass
 
+func _process(delta):
+	if velocity.x > 0:
+		rotation_degrees = 6
+	elif velocity.x < 0:
+		rotation_degrees = -6
+	else:
+		rotation_degrees = 0
+		
+	if Input.is_action_pressed("shoot") and shootDelay.is_stopped():
+		shootDelay.start()
+		for child in guns.get_children():
+			var this_bullet := bullet.instance()
+			get_parent().add_child(this_bullet)
+			this_bullet.position = child.global_position
 
 func _physics_process(delta):
 	var direction : Vector2 = Vector2.ZERO

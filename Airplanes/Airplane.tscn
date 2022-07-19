@@ -39,7 +39,6 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -51,3 +50,15 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
 shape = SubResource( 7 )
+
+[node name="Guns" type="Node2D" parent="."]
+
+[node name="LeftGun" type="Node2D" parent="Guns"]
+position = Vector2( -20, -16 )
+
+[node name="RightGun" type="Node2D" parent="Guns"]
+position = Vector2( 20, -16 )
+
+[node name="ShootDelay" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
