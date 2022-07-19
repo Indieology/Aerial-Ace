@@ -1,7 +1,9 @@
 extends KinematicBody2D
 
-export var speed : int = 175
+export var max_speed : int = 175
 var velocity : Vector2 = Vector2.ZERO
+
+onready var camera = get_parent().get_node("Camera2D")
 
 func _ready():
 	pass
@@ -15,6 +17,10 @@ func _physics_process(delta):
 	if direction.length() > 1:
 		direction = direction.normalized()
 	
-	velocity = direction * speed
+	velocity = direction * max_speed
 	position += velocity * delta
 	
+	
+	#var viewport := get_viewport_rect()
+	position.x = clamp(position.x, camera.position.x - 190, camera.position.x + 190) 
+	position.y = clamp(position.y, camera.position.y - 215, camera.position.y + 215)
