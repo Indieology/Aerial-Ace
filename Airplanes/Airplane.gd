@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 var bullet := preload("res://Projectiles/Bullet.tscn")
 
-export var max_speed : int = 175
-export var horizontal_speed_multiplier: float = 1.2
+export var max_speed : int = 100
+export var horizontal_speed_multiplier: float = 2
 var velocity : Vector2 = Vector2.ZERO
 
 onready var camera = get_parent().get_node("Camera2D")
@@ -15,9 +15,9 @@ func _ready():
 
 func _process(delta):
 	if velocity.x > 0:
-		rotation_degrees = 6
+		rotation_degrees = 5
 	elif velocity.x < 0:
-		rotation_degrees = -6
+		rotation_degrees = -5
 	else:
 		rotation_degrees = 0
 		
@@ -37,7 +37,7 @@ func _physics_process(delta):
 		direction = direction.normalized()
 	
 	velocity = direction * max_speed
-	position.x += velocity.x * 1.2 * delta
+	position.x += velocity.x * horizontal_speed_multiplier * delta
 	position.y += velocity.y * delta
 	
 	
