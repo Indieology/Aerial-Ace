@@ -1,7 +1,9 @@
 extends KinematicBody2D
+class_name Player
 
 var bullet := preload("res://Projectiles/Bullet.tscn")
 
+export var health: int = 5
 export var max_speed : int = 110
 export var horizontal_speed_multiplier: float = 2
 
@@ -11,6 +13,8 @@ var score: int = 0
 onready var camera = get_parent().get_node("Camera2D")
 onready var guns = $Guns
 onready var shootDelay = $ShootDelay
+onready var invincibilityTimer = $InvincibilityTimer
+onready var invincibilityAnimation = $InvincibilityAnimation
 
 func _ready():
 	pass
@@ -46,3 +50,15 @@ func _physics_process(delta):
 	#var viewport := get_viewport_rect()
 	position.x = clamp(position.x, camera.position.x - 190, camera.position.x + 190) 
 	position.y = clamp(position.y, camera.position.y - 125, camera.position.y + 215)
+
+func damage(amount: int):
+	if not invincibilityTimer.is_stopped():
+		return
+	invincibilityTimer.start()
+	invincibilityAnimation.play("Flash")
+	health -= amount
+	print("health = ")
+	print(health)
+	if health <= 0:
+		print("died")
+		queue_free()

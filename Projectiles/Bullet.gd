@@ -16,4 +16,4 @@ func _physics_process(delta):
 func _on_Bullet_area_entered(area):
 	if area.get_parent().is_in_group("damageable"):
 		area.get_parent().damage(1)
-	queue_free()
+		queue_free()
