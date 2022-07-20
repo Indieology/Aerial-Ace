@@ -1,0 +1,19 @@
+extends KinematicBody2D
+
+export var health : int = 8
+export var score : int = 50
+
+onready var hurt_effect := preload("res://Effects/Hurt Effect.tscn")
+
+func _ready():
+	add_to_group("damageable")
+
+func _on_Hurtbox_area_entered(area):
+	var this_hurt_effect = hurt_effect.instance()
+	get_parent().add_child(this_hurt_effect)
+	this_hurt_effect.position = area.position
+
+func damage(amount: int):
+	health -= amount
+	if health <= 0:
+		queue_free()

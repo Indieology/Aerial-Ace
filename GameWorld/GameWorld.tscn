@@ -99,3 +99,9 @@ position = Vector2( 232, 168 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 384, 128 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 312, 152 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 144 )

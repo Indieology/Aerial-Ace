@@ -2,9 +2,11 @@ extends KinematicBody2D
 
 var bullet := preload("res://Projectiles/Bullet.tscn")
 
-export var max_speed : int = 100
+export var max_speed : int = 110
 export var horizontal_speed_multiplier: float = 2
+
 var velocity : Vector2 = Vector2.ZERO
+var score: int = 0
 
 onready var camera = get_parent().get_node("Camera2D")
 onready var guns = $Guns

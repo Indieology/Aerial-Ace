@@ -45,9 +45,9 @@ playing = true
 visible = false
 shape = SubResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
 visible = false
 shape = SubResource( 7 )
 
