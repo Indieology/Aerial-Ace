@@ -37,10 +37,11 @@ height = 24.0
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 2 )
+health = 10
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
-frame = 3
+frame = 1
 playing = true
 flip_v = true
 
