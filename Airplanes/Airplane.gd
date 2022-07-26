@@ -57,9 +57,6 @@ func damage(amount: int):
 	invincibilityTimer.start()
 	invincibilityAnimation.play("Flash")
 	health -= amount
-	print("health = ")
-	print(health)
 	get_parent().get_node("HUD").update_health(health)
 	if health <= 0:
-		print("died")
 		queue_free()

@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 onready var HealthBar := $VBoxContainer/HealthBar
+onready var EnergyBar := $VBoxContainer/EnergyBar
 
 func _ready():
 	update_health(10)
