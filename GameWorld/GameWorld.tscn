@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GameWorld/Tileset/TilesetFloor.png" type="Texture" id=1]
 [ext_resource path="res://Airplanes/Airplane.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GameWorld/ParallaxBackground.gd" type="Script" id=4]
 [ext_resource path="res://Effects/speed line.png" type="Texture" id=5]
+[ext_resource path="res://Sounds/Music/Battle-LOOP.wav" type="AudioStream" id=6]
 
 [sub_resource type="TileSet" id=1]
 0/name = "TilesetFloor.png 0"
@@ -89,7 +90,7 @@ camera_velocity = Vector2( 0, 75 )
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 0, 2272 )
 
-[node name="TileMap" type="TileMap" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Floor" type="TileMap" parent="ParallaxBackground/ParallaxLayer"]
 z_index = -1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
@@ -118,6 +119,10 @@ position = Vector2( 235, 452 )
 position = Vector2( 257, 315 )
 current = true
 zoom = Vector2( 0.6, 0.6 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -40.202
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 91, 116 )

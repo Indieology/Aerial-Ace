@@ -41,11 +41,12 @@ health = 10
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, -2 )
 rotation = 1.5708
 shape = SubResource( 8 )
@@ -53,6 +54,7 @@ shape = SubResource( 8 )
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
 position = Vector2( 0, -2 )
 rotation = 1.5708
 shape = SubResource( 7 )
