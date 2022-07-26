@@ -187,4 +187,8 @@ wait_time = 0.25
 one_shot = true
 autostart = true
 
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -25.0
+autoplay = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
