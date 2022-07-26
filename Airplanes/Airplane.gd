@@ -17,7 +17,7 @@ onready var invincibilityTimer = $InvincibilityTimer
 onready var invincibilityAnimation = $InvincibilityAnimation
 
 func _ready():
-	pass
+	get_parent().get_node("HUD").set_max_health(health)
 
 func _process(delta):
 	if velocity.x > 0:
@@ -48,8 +48,8 @@ func _physics_process(delta):
 	
 	
 	#var viewport := get_viewport_rect()
-	position.x = clamp(position.x, camera.position.x - 190, camera.position.x + 190) 
-	position.y = clamp(position.y, camera.position.y - 125, camera.position.y + 215)
+	position.x = clamp(position.x, camera.position.x - 225, camera.position.x + 225) 
+	position.y = clamp(position.y, camera.position.y - 130, camera.position.y + 250)
 
 func damage(amount: int):
 	if not invincibilityTimer.is_stopped():
@@ -59,6 +59,7 @@ func damage(amount: int):
 	health -= amount
 	print("health = ")
 	print(health)
+	get_parent().get_node("HUD").update_health(health)
 	if health <= 0:
 		print("died")
 		queue_free()
