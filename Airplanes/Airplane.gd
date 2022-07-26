@@ -33,7 +33,9 @@ func _process(delta):
 			var this_bullet := bullet.instance()
 			get_parent().add_child(this_bullet)
 			this_bullet.position = child.global_position
-
+			var glow = child.get_child(0)
+			glow.visible = true
+			glow.get_child(0).start()
 func _physics_process(delta):
 	var direction : Vector2 = Vector2.ZERO
 	direction.x = Input.get_axis("move_left","move_right")
@@ -60,3 +62,8 @@ func damage(amount: int):
 	get_parent().get_node("HUD").update_health(health)
 	if health <= 0:
 		queue_free()
+
+func increase_score(score: int):
+	var current_score = get_parent().get_node("HUD/Label").text.to_int()
+	current_score += score
+	get_parent().get_node("HUD/Label").text = str(current_score)

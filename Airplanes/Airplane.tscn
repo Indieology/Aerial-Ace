@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Airplanes/ship_sheet1.png" type="Texture" id=1]
 [ext_resource path="res://Airplanes/Airplane.gd" type="Script" id=2]
+[ext_resource path="res://Effects/Glow.tscn" type="PackedScene" id=3]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
@@ -90,8 +91,14 @@ shape = SubResource( 7 )
 [node name="LeftGun" type="Node2D" parent="Guns"]
 position = Vector2( -20, -16 )
 
+[node name="Glow" parent="Guns/LeftGun" instance=ExtResource( 3 )]
+visible = false
+
 [node name="RightGun" type="Node2D" parent="Guns"]
 position = Vector2( 20, -16 )
+
+[node name="Glow2" parent="Guns/RightGun" instance=ExtResource( 3 )]
+visible = false
 
 [node name="ShootDelay" type="Timer" parent="."]
 wait_time = 0.15
