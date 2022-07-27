@@ -332,6 +332,8 @@ margin_bottom = 37.0
 texture_over = ExtResource( 12 )
 texture_progress = ExtResource( 13 )
 
+[node name="TweenHUD" type="Tween" parent="HUD"]
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource( 4 )
 camera_velocity = Vector2( 0, 75 )
@@ -381,23 +383,25 @@ zoom = Vector2( 0.75, 0.75 )
 stream = ExtResource( 6 )
 volume_db = -40.202
 
-[node name="Enemy" parent="." instance=ExtResource( 3 )]
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 112, 56 )
 
-[node name="Enemy2" parent="." instance=ExtResource( 3 )]
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 256, 96 )
 
-[node name="Enemy3" parent="." instance=ExtResource( 3 )]
+[node name="Enemy3" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 405, 60 )
 
-[node name="Enemy4" parent="." instance=ExtResource( 3 )]
+[node name="Enemy4" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 333, 84 )
 
-[node name="Enemy5" parent="." instance=ExtResource( 3 )]
+[node name="Enemy5" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 181, 76 )
 
-[node name="Enemy6" parent="." instance=ExtResource( 3 )]
+[node name="Enemy6" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 480, 56 )
 
-[node name="Enemy7" parent="." instance=ExtResource( 3 )]
+[node name="Enemy7" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 32, 56 )

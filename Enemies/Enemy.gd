@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var health : int = 8
 export var score : int = 75
-export var energy_dropped : int = 5
+export var energy_dropped : int = 10
 export var verticalSpeed : int = 20
 export var horizontalSpeed : int = 50
 
@@ -30,8 +30,8 @@ func damage(amount: int):
 		var this_explosion := explosion.instance()
 		get_parent().add_child(this_explosion)
 		this_explosion.position = position
-		get_parent().get_node("Airplane").increase_score(score)
-		get_parent().get_node("Airplane").increase_energy(energy_dropped)
+		get_parent().get_parent().get_node("Airplane").increase_score(score)
+		get_parent().get_parent().get_node("Airplane").increase_energy(energy_dropped)
 		queue_free()
 
 

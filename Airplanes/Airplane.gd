@@ -70,6 +70,7 @@ func increase_score(score: int):
 	get_parent().get_node("HUD/Label").text = str(current_score)
 
 func increase_energy(energy: int):
+	get_parent().get_node("HUD").update_previous_energy(current_energy)
 	if current_energy < 100:
 		current_energy += energy
 	if current_energy > 100:
