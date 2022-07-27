@@ -69,6 +69,8 @@ func increase_score(score: int):
 	var current_score = get_parent().get_node("HUD/Label").text.to_int()
 	current_score += score
 	get_parent().get_node("HUD/Label").text = str(current_score)
+	get_parent().get_node("HUD/Label/AnimationPlayer").play("Increase Score")
+	
 
 func increase_energy(energy: int):
 	get_parent().get_node("HUD").update_previous_energy(current_energy)
