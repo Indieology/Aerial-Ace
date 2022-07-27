@@ -12,3 +12,6 @@ func update_health(health: int):
 
 func set_max_health(max_health: int):
 	HealthBar.max_value = max_health
+
+func update_energy(energy: int):
+	EnergyBar.value = energy

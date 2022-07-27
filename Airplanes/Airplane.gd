@@ -4,6 +4,7 @@ class_name Player
 var bullet := preload("res://Projectiles/Bullet.tscn")
 
 export var health: int = 5
+export var current_energy: int = 0
 export var max_speed : int = 110
 export var horizontal_speed_multiplier: float = 2
 
@@ -67,3 +68,10 @@ func increase_score(score: int):
 	var current_score = get_parent().get_node("HUD/Label").text.to_int()
 	current_score += score
 	get_parent().get_node("HUD/Label").text = str(current_score)
+
+func increase_energy(energy: int):
+	if current_energy < 100:
+		current_energy += energy
+	if current_energy > 100:
+		current_energy = 100
+	get_parent().get_node("HUD").update_energy(current_energy)
