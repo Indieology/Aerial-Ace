@@ -30,6 +30,7 @@ func _process(delta):
 		
 	if Input.is_action_pressed("shoot") and shootDelay.is_stopped():
 		shootDelay.start()
+		$LaserSound.play()
 		for child in guns.get_children():
 			var this_bullet := bullet.instance()
 			get_parent().add_child(this_bullet)

@@ -19,6 +19,5 @@ func update_previous_energy(energy: int):
 	previous_energy = energy
 
 func update_energy(energy: int):
-	#EnergyBar.value = energy
 	$TweenHUD.interpolate_property(EnergyBar, "value", previous_energy, energy, .1,Tween.TRANS_LINEAR, Tween.EASE_IN, 0)
 	$TweenHUD.start()
