@@ -20,7 +20,8 @@ func _on_Hurtbox_area_entered(area):
 	get_parent().add_child(this_hurt_effect)
 	this_hurt_effect.position = area.global_position
 	if area.get_parent() is Player:
-		area.get_parent().damage(1)
+		area.get_parent().damage(2)
+		damage(8)
 		#move hurt effect position to show collision between the two objects?
 		
 	

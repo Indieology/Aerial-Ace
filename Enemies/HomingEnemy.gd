@@ -3,7 +3,7 @@ extends KinematicBody2D
 export var health : int = 3
 export var score : int = 75
 export var energy_dropped : int = 10
-export var verticalSpeed : int = 20
+export var verticalSpeed : int = 10
 export var horizontalSpeed : int = 50
 
 onready var hurt_effect := preload("res://Effects/Hurt Effect.tscn")
@@ -13,14 +13,17 @@ func _ready():
 	add_to_group("damageable")
 
 func _physics_process(delta):
-	position.y += verticalSpeed * delta
+	if get_parent().get_parent().get_node("Airplane"):
+		position = position.move_toward(get_parent().get_parent().get_node("Airplane").position, 75 * delta)
+		look_at(get_parent().get_parent().get_node("Airplane").position)
 
 func _on_Hurtbox_area_entered(area):
 	var this_hurt_effect = hurt_effect.instance()
 	get_parent().add_child(this_hurt_effect)
 	this_hurt_effect.position = area.global_position
 	if area.get_parent() is Player:
-		area.get_parent().damage(1)
+		area.get_parent().damage(2)
+		damage(3)
 		#move hurt effect position to show collision between the two objects?
 		
 	
