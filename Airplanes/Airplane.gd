@@ -50,8 +50,8 @@ func _physics_process(delta):
 	
 	
 	#var viewport := get_viewport_rect()
-	position.x = clamp(position.x, camera.position.x - 225, camera.position.x + 225) 
-	position.y = clamp(position.y, camera.position.y - 130, camera.position.y + 250)
+	position.x = clamp(position.x, camera.position.x - 235, camera.position.x + 235) 
+	position.y = clamp(position.y, camera.position.y - 145, camera.position.y + 265)
 
 func damage(amount: int):
 	if not invincibilityTimer.is_stopped():

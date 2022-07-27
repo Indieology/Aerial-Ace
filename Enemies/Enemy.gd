@@ -2,12 +2,17 @@ extends KinematicBody2D
 
 export var health : int = 8
 export var score : int = 75
+export var verticalSpeed : int = 20
+export var horizontalSpeed : int = 50
 
 onready var hurt_effect := preload("res://Effects/Hurt Effect.tscn")
 onready var explosion := preload("res://Effects/Explosion/Explosion.tscn")
 
 func _ready():
 	add_to_group("damageable")
+
+func _physics_process(delta):
+	position.y += verticalSpeed * delta
 
 func _on_Hurtbox_area_entered(area):
 	var this_hurt_effect = hurt_effect.instance()
@@ -26,3 +31,7 @@ func damage(amount: int):
 		this_explosion.position = position
 		get_parent().get_node("Airplane").increase_score(score)
 		queue_free()
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
