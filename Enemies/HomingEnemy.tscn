@@ -32,17 +32,18 @@ radius = 5.83331
 height = 16.3333
 
 [sub_resource type="CapsuleShape2D" id=7]
-radius = 8.33329
-height = 18.3334
+radius = 15.8333
+height = 1.66669
 
 [node name="HomingEnemy" type="KinematicBody2D"]
+rotation = 1.5708
 scale = Vector2( 1.2, 1.2 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 rotation = -1.5708
 frames = SubResource( 6 )
-frame = 3
+frame = 2
 playing = true
 flip_v = true
 
@@ -55,7 +56,6 @@ shape = SubResource( 8 )
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
-visible = false
 position = Vector2( -4.16667, -0.833333 )
 rotation = 1.5708
 shape = SubResource( 7 )

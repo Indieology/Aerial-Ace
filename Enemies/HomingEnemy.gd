@@ -8,14 +8,21 @@ export var horizontalSpeed : int = 50
 
 onready var hurt_effect := preload("res://Effects/Hurt Effect.tscn")
 onready var explosion := preload("res://Effects/Explosion/Explosion_Homing_Enemy.tscn")
+onready var airplane : = get_parent().get_parent().get_node("Airplane")
+
+#reference to the airplane node above, to check if it is still in scene
+onready var wr = weakref(airplane)
 
 func _ready():
 	add_to_group("damageable")
 
 func _physics_process(delta):
-	if get_parent().get_parent().get_node("Airplane"):
-		position = position.move_toward(get_parent().get_parent().get_node("Airplane").position, 75 * delta)
-		look_at(get_parent().get_parent().get_node("Airplane").position)
+	#exit function if player no longer exists
+	if (!wr.get_ref()):
+		pass
+	else:
+		position = position.move_toward(airplane.position, 80 * delta)
+		look_at(airplane.position)
 
 func _on_Hurtbox_area_entered(area):
 	var this_hurt_effect = hurt_effect.instance()
@@ -23,7 +30,7 @@ func _on_Hurtbox_area_entered(area):
 	this_hurt_effect.position = area.global_position
 	if area.get_parent() is Player:
 		area.get_parent().damage(2)
-		damage(3)
+		damage(health)
 		#move hurt effect position to show collision between the two objects?
 		
 	
@@ -33,8 +40,8 @@ func damage(amount: int):
 		var this_explosion := explosion.instance()
 		get_parent().add_child(this_explosion)
 		this_explosion.position = position
-		get_parent().get_parent().get_node("Airplane").increase_score(score)
-		get_parent().get_parent().get_node("Airplane").increase_energy(energy_dropped)
+		airplane.increase_score(score)
+		airplane.increase_energy(energy_dropped)
 		queue_free()
 
 

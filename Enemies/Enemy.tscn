@@ -33,16 +33,15 @@ height = 24.6667
 
 [sub_resource type="CapsuleShape2D" id=7]
 radius = 8.66662
-height = 24.0
+height = 26.0001
 
 [node name="Enemy" type="KinematicBody2D"]
 scale = Vector2( 1.2, 1.2 )
 script = ExtResource( 2 )
-health = 4
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
-frame = 2
+frame = 1
 playing = true
 flip_v = true
 

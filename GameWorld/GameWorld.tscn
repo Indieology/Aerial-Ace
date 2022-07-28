@@ -359,8 +359,71 @@ position = Vector2( 480, 56 )
 [node name="Enemy7" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 32, 56 )
 
+[node name="Enemy8" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 120, -1072 )
+
+[node name="Enemy9" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 264, -1032 )
+
+[node name="Enemy10" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 413, -1068 )
+
+[node name="Enemy11" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 341, -1044 )
+
+[node name="Enemy12" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 189, -1052 )
+
+[node name="Enemy13" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 488, -1072 )
+
+[node name="Enemy14" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 40, -1072 )
+
 [node name="HomingEnemy" parent="Enemies" instance=ExtResource( 15 )]
 position = Vector2( 96, 152 )
 
+[node name="HomingEnemy3" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( 24, -240 )
+
+[node name="HomingEnemy4" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( 536, -240 )
+
+[node name="HomingEnemy5" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( 696, -568 )
+
+[node name="HomingEnemy7" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( 896, -784 )
+
+[node name="HomingEnemy8" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( -432, -840 )
+
+[node name="HomingEnemy6" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( -184, -568 )
+
 [node name="HomingEnemy2" parent="Enemies" instance=ExtResource( 15 )]
-position = Vector2( 424, 144 )
+position = Vector2( 424, 152 )
+
+[node name="HomingEnemy9" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( -680, -1536 )
+
+[node name="HomingEnemy10" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( -656, -1984 )
+
+[node name="HomingEnemy11" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( 1304, -2000 )
+
+[node name="HomingEnemy12" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( 1328, -2392 )
+
+[node name="HomingEnemy13" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( 1352, -2856 )
+
+[node name="HomingEnemy14" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( -912, -2936 )
+
+[node name="HomingEnemy15" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( -816, -2552 )
+
+[node name="HomingEnemy16" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( 1208, -1512 )

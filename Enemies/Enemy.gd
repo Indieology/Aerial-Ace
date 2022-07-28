@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-export var health : int = 8
+export var health : int = 4
 export var score : int = 75
 export var energy_dropped : int = 10
-export var verticalSpeed : int = 20
+export var verticalSpeed : int = 15
 export var horizontalSpeed : int = 50
 
 onready var hurt_effect := preload("res://Effects/Hurt Effect.tscn")
@@ -21,7 +21,7 @@ func _on_Hurtbox_area_entered(area):
 	this_hurt_effect.position = area.global_position
 	if area.get_parent() is Player:
 		area.get_parent().damage(2)
-		damage(8)
+		damage(health)
 		#move hurt effect position to show collision between the two objects?
 		
 	
