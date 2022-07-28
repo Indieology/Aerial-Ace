@@ -6,7 +6,7 @@ var bullet := preload("res://Projectiles/Bullet.tscn")
 export var health: int = 5
 export var current_energy: int = 0
 export var max_speed : int = 110
-export var horizontal_speed_multiplier: float = 2
+export var horizontal_speed_multiplier: float = 2.1
 
 var velocity : Vector2 = Vector2.ZERO
 var score: int = 0
@@ -18,6 +18,7 @@ onready var invincibilityTimer = $InvincibilityTimer
 onready var invincibilityAnimation = $InvincibilityAnimation
 
 func _ready():
+	add_to_group("damageable")
 	get_parent().get_node("HUD").set_max_health(health)
 
 func _process(delta):

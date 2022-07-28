@@ -8,6 +8,7 @@ export var horizontalSpeed : int = 50
 
 onready var hurt_effect := preload("res://Effects/Hurt Effect.tscn")
 onready var explosion := preload("res://Effects/Explosion/Explosion_Homing_Enemy.tscn")
+
 onready var airplane : = get_parent().get_parent().get_node("Airplane")
 
 #reference to the airplane node above, to check if it is still in scene

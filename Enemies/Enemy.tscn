@@ -41,7 +41,7 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 flip_v = true
 
@@ -63,6 +63,15 @@ shape = SubResource( 7 )
 visible = false
 position = Vector2( 9.53674e-07, 4.76837e-07 )
 scale = Vector2( 2.83333, 2.16667 )
+
+[node name="FiringPositions" type="Node2D" parent="."]
+
+[node name="Gun" type="Node2D" parent="FiringPositions"]
+position = Vector2( 0, 15 )
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

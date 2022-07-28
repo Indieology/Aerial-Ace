@@ -3,17 +3,33 @@ extends KinematicBody2D
 export var health : int = 4
 export var score : int = 75
 export var energy_dropped : int = 10
-export var verticalSpeed : int = 15
-export var horizontalSpeed : int = 50
+export var verticalSpeed : int = 8
+#export var horizontalSpeed : int = 50
+
+onready var guns := $FiringPositions
+onready var fireTimer := $FireTimer
+onready var airplane : = get_parent().get_parent().get_node("Airplane")
 
 onready var hurt_effect := preload("res://Effects/Hurt Effect.tscn")
 onready var explosion := preload("res://Effects/Explosion/Explosion.tscn")
+onready var bullet := preload("res://Projectiles/EnemyMissile.tscn")
+
+#reference to the airplane node above, to check if it is still in scene
+onready var wr = weakref(airplane)
 
 func _ready():
 	add_to_group("damageable")
+	randomize()
+	fireTimer.wait_time = rand_range(1,6)
+	fireTimer.start()
 
 func _physics_process(delta):
 	position.y += verticalSpeed * delta
+	if fireTimer.is_stopped() and global_position.y > 0:
+		fire()
+		randomize()
+		fireTimer.wait_time = rand_range(1,6)
+		fireTimer.start()
 
 func _on_Hurtbox_area_entered(area):
 	var this_hurt_effect = hurt_effect.instance()
@@ -31,10 +47,19 @@ func damage(amount: int):
 		var this_explosion := explosion.instance()
 		get_parent().add_child(this_explosion)
 		this_explosion.position = position
-		get_parent().get_parent().get_node("Airplane").increase_score(score)
-		get_parent().get_parent().get_node("Airplane").increase_energy(energy_dropped)
+		#exit function if player no longer exists
+		if (!wr.get_ref()):
+			pass
+		else:
+			airplane.increase_score(score)
+			airplane.increase_energy(energy_dropped)
 		queue_free()
 
+func fire():
+	for child in guns.get_children():
+			var this_bullet := bullet.instance()
+			get_parent().get_parent().add_child(this_bullet)
+			this_bullet.position = child.global_position
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
