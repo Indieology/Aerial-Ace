@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var health : int = 3
+export var health : int = 4
 export var score : int = 75
 export var energy_dropped : int = 10
 export var verticalSpeed : int = 8
@@ -8,32 +8,23 @@ export var verticalSpeed : int = 8
 
 onready var guns := $FiringPositions
 onready var fireTimer := $FireTimer
-onready var sprite := $AnimatedSprite
-onready var player : = get_parent().get_parent().get_parent().get_node("Player")
+onready var airplane : = get_parent().get_parent().get_node("Airplane")
 
 onready var hurt_effect := preload("res://Effects/Hurt Effect.tscn")
 onready var explosion := preload("res://Effects/Explosion/Explosion.tscn")
-onready var bullet := preload("res://Projectiles/Bullet.tscn")
-
+onready var bullet := preload("res://Projectiles/EnemyMissile.tscn")
 
 #reference to the airplane node above, to check if it is still in scene
-onready var wr = weakref(player)
+onready var wr = weakref(airplane)
 
 func _ready():
-	#add_to_group("damageable")
+	add_to_group("damageable")
 	randomize()
 	fireTimer.wait_time = rand_range(1,6)
 	fireTimer.start()
 
-func _process(delta):
-	if health == 2:
-		sprite.frame = 1
-	if health <= 1:
-		sprite.frame = 2
-
 func _physics_process(delta):
-	add_to_group("damageable")
-	#position.y += verticalSpeed * delta
+	position.y += verticalSpeed * delta
 	if fireTimer.is_stopped() and global_position.y > 0:
 		fire()
 		randomize()
@@ -60,16 +51,15 @@ func damage(amount: int):
 		if (!wr.get_ref()):
 			pass
 		else:
-			player.increase_score(score)
-			player.increase_energy(energy_dropped)
+			airplane.increase_score(score)
+			airplane.increase_energy(energy_dropped)
 		queue_free()
 
 func fire():
 	for child in guns.get_children():
 			var this_bullet := bullet.instance()
-			get_parent().get_parent().get_parent().add_child(this_bullet)
+			get_parent().get_parent().add_child(this_bullet)
 			this_bullet.position = child.global_position
-			this_bullet.direction = child.shoot_direction
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

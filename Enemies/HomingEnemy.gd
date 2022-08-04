@@ -1,0 +1,50 @@
+extends KinematicBody2D
+
+export var health : int = 3
+export var score : int = 75
+export var energy_dropped : int = 10
+export var verticalSpeed : int = 10
+export var horizontalSpeed : int = 50
+
+onready var hurt_effect := preload("res://Effects/Hurt Effect.tscn")
+onready var explosion := preload("res://Effects/Explosion/Explosion_Homing_Enemy.tscn")
+
+onready var airplane : = get_parent().get_parent().get_node("Airplane")
+
+#reference to the airplane node above, to check if it is still in scene
+onready var wr = weakref(airplane)
+
+func _ready():
+	add_to_group("damageable")
+
+func _physics_process(delta):
+	#exit function if player no longer exists
+	if (!wr.get_ref()):
+		pass
+	else:
+		position = position.move_toward(airplane.position, 80 * delta)
+		look_at(airplane.position)
+
+func _on_Hurtbox_area_entered(area):
+	var this_hurt_effect = hurt_effect.instance()
+	get_parent().add_child(this_hurt_effect)
+	this_hurt_effect.position = area.global_position
+	if area.get_parent() is Player:
+		area.get_parent().damage(2)
+		damage(health)
+		#move hurt effect position to show collision between the two objects?
+		
+	
+func damage(amount: int):
+	health -= amount
+	if health <= 0:
+		var this_explosion := explosion.instance()
+		get_parent().add_child(this_explosion)
+		this_explosion.position = position
+		airplane.increase_score(score)
+		airplane.increase_energy(energy_dropped)
+		queue_free()
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
